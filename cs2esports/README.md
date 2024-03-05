@@ -1,16 +1,12 @@
 # CS2ESPORTS
 
-    The app is a react web app that shows statistics, events and news about Counter-Strike 2 E-sports. Our data will come from a unofficial HLTV npm package (GitHub - gigobyte/HLTV: The unofficial HLTV Node.js API ).
+The app is a react web app that shows statistics, events and news about Counter-Strike 2 E-sports. Our data will come from a unofficial HLTV npm package (GitHub - gigobyte/HLTV: The unofficial HLTV Node.js API ).
 
-    for user signup and login we will use our own database.
+for user signup and login we will use our own database.
 
-‌
+The site also supports a newsletter where the user can choose what events they get notified about.
 
-    The site also supports a newsletter where the user can choose what events they get notified about.
-
-‌
-
-    The app is for any person who is interested about the Counter-Strike 2 E-sports scene.
+‌The app is for any person who is interested about the Counter-Strike 2 E-sports scene.
 
 # Getting Started with Create React App
 
