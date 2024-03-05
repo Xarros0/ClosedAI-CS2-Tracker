@@ -4,11 +4,13 @@ const Navbar: React.FC = () => {
   const navbarStyles = {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: '',
+    justifyContent: 'space-between', // Adjust as needed
     backgroundColor: '#1C3144',
     height: '100px',
     width: '98%',
-    padding: '0 20px'
+    padding: '0 20px',
+    borderBottom: '2px solid black', 
+
   };
 
   const headingStyles: React.CSSProperties = {
