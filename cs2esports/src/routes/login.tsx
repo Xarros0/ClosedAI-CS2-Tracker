@@ -17,8 +17,8 @@ const Login: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: '#1C3144', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
-      <div>
-        <h1 style={{ color: '#FFBA08' }}>LOG IN</h1>
+      <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <h1 style={{ color: '#FFBA08', marginBottom: '20px' }}>LOG IN</h1>
         {loggedIn ? (
           <p>You are logged in!</p>
         ) : (

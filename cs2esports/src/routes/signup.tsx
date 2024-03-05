@@ -8,19 +8,20 @@ const Signup: React.FC = () => {
   const [signedUp, setSignedUp] = useState(false);
 
   const handleSignup = () => {
-    // Here you can implement your signup logic, for simplicity, I'll just check if all fields are filled and passwords match
+    // Here you can implement your signup logic
+    // For simplicity, I'll just check if all fields are filled and passwords match
     if (nickname && email && password && confirmPassword && password === confirmPassword) {
       setSignedUp(true);
       alert('Signed up successfully!');
     } else {
-      alert('Please fill in all fields and make sure passwords match');
+      alert('Please fill all fields correctly');
     }
   };
 
   return (
     <div style={{ backgroundColor: '#1C3144', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
-      <div>
-        <h1 style={{ color: '#FFBA08' }}>SIGN UP</h1>
+      <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <h1 style={{ color: '#FFBA08', marginBottom: '20px' }}>SIGN UP</h1>
         {signedUp ? (
           <p>You are signed up!</p>
         ) : (
@@ -66,11 +67,8 @@ const Signup: React.FC = () => {
               onClick={handleSignup}
               style={{ backgroundColor: '#3F88C5', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer', marginTop: '10px' }}
             >
-              Sign Up
+              Sign up
             </button>
-            <p style={{ color: 'white', marginTop: '10px' }}>
-              Already have an account? <a href="#" style={{ color: '#FFBA08', textDecoration: 'underline' }}>Log in</a>
-            </p>
           </form>
         )}
       </div>

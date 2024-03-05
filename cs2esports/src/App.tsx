@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       
-        <Login/> {/* Render the login component */}
+        <Signup/> {/* Render the login component */}
        
     </div>
   );
