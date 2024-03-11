@@ -1,9 +1,11 @@
 import MainNavbar from './components/mainNavbar'; // Corrected import statement
+import Settings from './routes/settings';
+
 
 function App() {
   return (
     <div className="App">
-      <MainNavbar /> {/* Corrected usage */}
+      <Settings /> {/* Corrected usage */}
     </div>
   );
 }
