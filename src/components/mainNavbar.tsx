@@ -68,24 +68,25 @@ const MainNavbar: React.FC = () => {
     <nav style={navbarStyles}>
       
       <div style={linkContainerStyles}>
-      <h1 style={headingStyles}><a href="/" style={headingStyles}>CS2Esports</a></h1>
+      <h1 style={headingStyles}><a href="/mainpage" style={headingStyles}>CS2Esports</a></h1>
         <a href="/news" style={linkStyles}>News</a>
         <a href="/events" style={linkStyles}>Events</a>
-        <a href="/topteams" style={linkStyles}>Top teams</a>
-        <a href="/topplayers" style={linkStyles}>Top players</a>
+        <a href="/teamranking" style={linkStyles}>Top teams</a>
+        <a href="/playerranking" style={linkStyles}>Top players</a>
         <a href="/forum" style={linkStyles}>Forum</a>
       </div>
       <div style={searchContainerStyles}>
         <input type="text" placeholder="Search..." style={searchInputStyles} />
-        <button style={searchButtonStyles}>Search</button>
+        <a href='/search' style={linkStyles}>
+          <button style={searchButtonStyles}>Search</button>
+        </a>
       </div>
       <div style={linkContainerStyles}>
-        <a href="#" style={linkStyles}>Sign in</a> {/* Adjust href accordingly */}
-        <img
-            src={'./public/settings.png'}
-            alt="settings"
-            style={imageStyles}
-          />
+        <a href="/login" style={linkStyles}>Sign in</a>
+        <a href="/settings" style={linkStyles}>
+          <img src={'./settings.png'} alt="settings" style={imageStyles}>
+          </img>
+        </a>
       </div>
     </nav>
   );

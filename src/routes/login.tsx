@@ -52,7 +52,7 @@ const Login: React.FC = () => {
               Login
             </button>
             <p style={{ color: 'white', marginTop: '10px' }}>
-              Don't have an account? <a href="#" style={{ color: '#FFBA08', textDecoration: 'underline' }}>Sign up</a>
+              Don't have an account? <a href="/signup" style={{ color: '#FFBA08', textDecoration: 'underline' }}>Sign up</a>
             </p>
           </form>
         )}

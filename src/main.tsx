@@ -5,6 +5,7 @@ import Mainpage from './routes/mainpage';
 import Login from './routes/login';
 import Signup from './routes/signup';
 import Profile from './routes/profile';
+import Search from './components/search';
 import Settings from './routes/settings';
 import ForumCatalog from './components/forumCatalog';
 import Forum from './components/forum';
@@ -16,9 +17,6 @@ import PlayerRanking from './components/playerranking';
 import Player from './components/player';
 import EventsCatalog from './components/eventsCatalog';
 import Events from './components/events';
-
-
-
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -32,6 +30,7 @@ if (rootElement) {
           <Route path="/mainpage" element={<Mainpage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/forumcatalog" element={<ForumCatalog />} />
