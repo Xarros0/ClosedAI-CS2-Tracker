@@ -2,25 +2,33 @@ import React from 'react';
 
 const MainNavbar: React.FC = () => {
   const navbarStyles: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between', // Adjust as needed
+    justifyContent: 'space-between',
     backgroundColor: '#1C3144',
-    height: '100px',
-    width: '98%',
-    padding: '0 20px',
+    height: '50px',
+    width: '100%',
     borderBottom: '2px solid black', 
+    zIndex: 1,
   };
 
   const headingStyles: React.CSSProperties = {
     color: 'red',
     fontWeight: 'bold',
-    fontFamily: 'Arial, sans-serif'
+    fontFamily: 'Arial, sans-serif',
+    WebkitTextStroke: '1px black',
+    WebkitTextStrokeColor: 'black',
+    textDecoration: 'none',
+    paddingLeft: '20px',
   };
 
   const linkContainerStyles: React.CSSProperties = {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   };
 
   const linkStyles: React.CSSProperties = {
@@ -51,14 +59,17 @@ const MainNavbar: React.FC = () => {
   const imageStyles: React.CSSProperties = {
     width: '30px',
     height: 'auto',
-    marginLeft: '10px'
+    color: 'white',
+    marginLeft: '20px',
+    marginRight: '20px',
   };
 
   return (
     <nav style={navbarStyles}>
-      <h1 style={headingStyles}>CS2Esports</h1>
+      
       <div style={linkContainerStyles}>
-        <a href="/" style={linkStyles}>News</a>
+      <h1 style={headingStyles}><a href="/" style={headingStyles}>CS2Esports</a></h1>
+        <a href="/news" style={linkStyles}>News</a>
         <a href="/events" style={linkStyles}>Events</a>
         <a href="/topteams" style={linkStyles}>Top teams</a>
         <a href="/topplayers" style={linkStyles}>Top players</a>
@@ -69,12 +80,13 @@ const MainNavbar: React.FC = () => {
         <button style={searchButtonStyles}>Search</button>
       </div>
       <div style={linkContainerStyles}>
-        <a href="#" style={linkStyles}>Sign up</a> {/* Adjust href accordingly */}
+        <a href="#" style={linkStyles}>Sign in</a> {/* Adjust href accordingly */}
         <img
-            src={'../settings.png'}
-            alt="Profile"
+            src={'./public/settings.png'}
+            alt="settings"
             style={imageStyles}
-          />      </div>
+          />
+      </div>
     </nav>
   );
 };
