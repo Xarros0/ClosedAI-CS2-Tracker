@@ -62,11 +62,11 @@ const MainNavbar: React.FC = () => {
       
       <div style={linkContainerStyles}>
       <h1 style={headingStyles}><a href="/mainpage" style={headingStyles}>CS2Esports</a></h1>
-        <a href="/news" style={linkStyles}>News</a>
-        <a href="/events" style={linkStyles}>Events</a>
+        <a href="/newscatalog" style={linkStyles}>News</a>
+        <a href="/eventscatalog" style={linkStyles}>Events</a>
         <a href="/teamranking" style={linkStyles}>Top teams</a>
         <a href="/playerranking" style={linkStyles}>Top players</a>
-        <a href="/forum" style={linkStyles}>Forum</a>
+        <a href="/forumcatalog" style={linkStyles}>Forum</a>
       </div>
       <div style={searchContainerStyles}>
         <input type="text" placeholder="Search..." style={searchInputStyles} />
