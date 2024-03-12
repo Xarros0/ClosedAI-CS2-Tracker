@@ -6,7 +6,7 @@ const team: React.FC = () => {
         boxSizing: 'border-box',
         position: 'absolute',
         width: '94%',
-        height: '2759px',
+        height: '100%',
         background: '#A2AEBB',
         border: '1px solid #000000',
         marginTop: '0px',
