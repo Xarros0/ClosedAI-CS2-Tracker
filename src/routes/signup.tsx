@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../components/navbar';
+import Navbar from '../components/mainNavbar';
 
 const Signup: React.FC = () => {
   const [nickname, setNickname] = useState('');
@@ -21,53 +21,57 @@ const Signup: React.FC = () => {
 
   return (
     <div> <Navbar/>
-    <div style={{ backgroundColor: '#1C3144', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
-      <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '700px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <h1 style={{ color: '#FFBA08', marginBottom: '20px' }}>SIGN UP</h1>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, padding: '200px',height: '900px', width: '400px' }}>
+        <h1 style={{ textAlign: 'center', color: '#FFBA08', marginBottom: '20px', fontSize: '32px' }}>SIGN UP</h1>
         {signedUp ? (
-          <p>You are signed up!</p>
+          <p style={{ textAlign: 'center' }}>You are signed up!</p>
         ) : (
           <form>
-            <div>
-              <label htmlFor="nickname">Nickname:</label>
+            <div style={{ marginBottom: '20px' }}>
+              <label htmlFor="nickname" style={{ display: 'block', marginBottom: '5px' }}>Nickname:</label>
               <input
                 type="text"
                 id="nickname"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
               />
             </div>
-            <div>
-              <label htmlFor="email">Email:</label>
+            <div style={{ marginBottom: '20px' }}>
+              <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
               <input
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
               />
             </div>
-            <div>
-              <label htmlFor="password">Password:</label>
+            <div style={{ marginBottom: '20px' }}>
+              <label htmlFor="password" style={{ display: 'block', marginBottom: '5px' }}>Password:</label>
               <input
                 type="password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
               />
             </div>
-            <div>
-              <label htmlFor="confirmPassword">Confirm Password:</label>
+            <div style={{ marginBottom: '20px' }}>
+              <label htmlFor="confirmPassword" style={{ display: 'block', marginBottom: '5px' }}>Confirm Password:</label>
               <input
                 type="password"
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
               />
             </div>
             <button
               type="button"
               onClick={handleSignup}
-              style={{ backgroundColor: '#3F88C5', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer', marginTop: '10px', width: '60%'}}
+              style={{ backgroundColor: '#3F88C5', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer', width: '100%', borderRadius: '4px' }}
             >
               Sign up
             </button>
