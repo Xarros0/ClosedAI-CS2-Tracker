@@ -1,6 +1,6 @@
 interface WriteComment {
-    content: string;
-    postId: string;
+    content?: string;
+    postId?: string;
 }
 
 export type { WriteComment };

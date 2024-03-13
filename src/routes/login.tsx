@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
 import Navbar from '../components/navbar';
+import { login } from '../utils/graphql/queries';
+import { Credentials } from '../utils/interfaces/Credentials';
+import { doGraphQLFetch } from '../utils/graphql/fetch';
+import LoginMessageResponse from '../utils/interfaces/LoginMessageResponse';
 
 const Login: React.FC = () => {
+  const apiURL = import.meta.env.VITE_API_URL;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (username && password) {
-      setLoggedIn(true);
-      alert('Logged in successfully!');
+      try {
+        const credentials: Credentials = {
+          username,
+          password,
+        };
+        const loginData = await doGraphQLFetch(apiURL, login, { credentials }) as LoginMessageResponse;
+        // Check loginData for errors or successful login
+        if (loginData.login.token) {
+          setLoggedIn(true);
+          alert('Logged in successfully!');
+          // Additional actions after successful login, e.g., redirect or update state
+        } else {
+          alert('Login failed. Please check your credentials.');
+        }
+      } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred during login.');
+      }
     } else {
       alert('Please enter username and password');
     }

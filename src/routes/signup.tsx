@@ -1,23 +1,40 @@
 import React, { useState } from 'react';
 import Navbar from '../components/navbar';
+import { register } from '../utils/graphql/queries';
+import { doGraphQLFetch } from '../utils/graphql/fetch';
 
 const Signup: React.FC = () => {
+  const apiURL = import.meta.env.VITE_API_URL;
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [signedUp, setSignedUp] = useState(false);
 
-  const handleSignup = () => {
-    // Here you can implement your signup logic
-    // For simplicity, I'll just check if all fields are filled and passwords match
+  const handleSignup = async () => {
     if (nickname && email && password && confirmPassword && password === confirmPassword) {
-      setSignedUp(true);
-      alert('Signed up successfully!');
+        try {
+          const user = { email, username: nickname, password }; // Constructing the user object
+          const variables = { user }; // Wrapping the user object in a variable object
+            const signupData = await doGraphQLFetch(apiURL, register, variables);
+            console.log('Signup response:', signupData);
+            if (signupData.register && signupData.register.message === "User created successfully") {
+              setSignedUp(true);
+              alert('Signed up successfully!');
+              // Additional actions after successful signup, e.g., redirect or update state
+            } else {
+                console.error('Signup failed:', signupData);
+                alert('Signup failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error during signup:', error);
+            alert('An error occurred during signup.');
+        }
     } else {
-      alert('Please fill all fields correctly');
+        alert('Please fill all fields correctly');
     }
-  };
+};
+
 
   return (
     <div> <Navbar />
