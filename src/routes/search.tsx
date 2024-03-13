@@ -9,9 +9,9 @@ const Search: React.FC = () => {
     const handleSearch = () => {
         // Here you can implement your search logic
         // For demonstration, I'll just set some sample results
-        const samplePlayerResults: string[] = ['Player 1', 'Player 2', 'Player 3'];
-        const sampleTeamResults: string[] = ['Team A', 'Team B', 'Team C'];
-        const sampleArticleResults: string[] = ['Article 1', 'Article 2', 'Article 3'];
+        const samplePlayerResults: string[] = ['Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5', 'Player 6', 'Player 7', 'Player 8', 'Player 9', 'Player 10'];
+        const sampleTeamResults: string[] = ['Team A', 'Team B', 'Team C', 'Team D', 'Team E', 'Team F', 'Team G', 'Team H', 'Team I', 'Team J'];
+        const sampleArticleResults: string[] = ['Article 1', 'Article 2', 'Article 3', 'Article 4', 'Article 5', 'Article 6', 'Article 7', 'Article 8', 'Article 9', 'Article 10'];
 
         setPlayerResults(samplePlayerResults);
         setTeamResults(sampleTeamResults);
@@ -29,11 +29,13 @@ const Search: React.FC = () => {
                     <div style={headerRowStyles}>
                         <div style={headerCellStyles}>Players</div>
                     </div>
-                    {playerResults.map((player, index) => (
-                        <div key={index} style={rowStyles}>
-                            <div style={cellStyles}>{player}</div>
-                        </div>
-                    ))}
+                    <div style={{ ...scrollableContainer, maxHeight: '200px' }}>
+                        {playerResults.map((player, index) => (
+                            <div key={index} style={rowStyles}>
+                                <div style={cellStyles}>{player}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -43,11 +45,13 @@ const Search: React.FC = () => {
                     <div style={headerRowStyles}>
                         <div style={headerCellStyles}>Teams</div>
                     </div>
-                    {teamResults.map((team, index) => (
-                        <div key={index} style={rowStyles}>
-                            <div style={cellStyles}>{team}</div>
-                        </div>
-                    ))}
+                    <div style={{ ...scrollableContainer, maxHeight: '200px' }}>
+                        {teamResults.map((team, index) => (
+                            <div key={index} style={rowStyles}>
+                                <div style={cellStyles}>{team}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -57,11 +61,13 @@ const Search: React.FC = () => {
                     <div style={headerRowStyles}>
                         <div style={headerCellStyles}>Articles</div>
                     </div>
-                    {articleResults.map((article, index) => (
-                        <div key={index} style={rowStyles}>
-                            <div style={cellStyles}>{article}</div>
-                        </div>
-                    ))}
+                    <div style={{ ...scrollableContainer, maxHeight: '200px' }}>
+                        {articleResults.map((article, index) => (
+                            <div key={index} style={rowStyles}>
+                                <div style={cellStyles}>{article}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,7 +78,7 @@ const foreground: React.CSSProperties = {
     boxSizing: 'border-box',
     position: 'absolute',
     width: '94%',
-    height: '100%',
+    height: '120%',
     background: '#A2AEBB',
     border: '1px solid #000000',
     marginTop: '0px',
@@ -126,6 +132,11 @@ const cellStyles: React.CSSProperties = {
     fontSize: '40px',
     lineHeight: '47px',
     color: '#000000',
+};
+
+const scrollableContainer: React.CSSProperties = {
+    overflowY: 'auto', // Enable vertical scrollbar
+    paddingRight: '17px', // Adjust for scrollbar to avoid shifting
 };
 
 export default Search;
