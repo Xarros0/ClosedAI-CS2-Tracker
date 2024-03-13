@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 
 const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
+  const [loggedIn] = useState(!!Cookies.get('token')); // Check if token exists
   const [searchQuery, setSearchQuery] = useState('');
 
   const navbarStyles: React.CSSProperties = {
@@ -74,7 +76,6 @@ const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
 
   return (
     <nav style={navbarStyles}>
-      
       <div style={linkContainerStyles}>
       <h1 style={headingStyles}><a href="/" style={headingStyles}>CS2Esports</a></h1>
         <a href="/newscatalog" style={linkStyles}>News</a>
@@ -96,11 +97,10 @@ const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
         </div>
       </div>
       <div style={linkContainerStyles}>
-        <a href="/login" style={linkStyles}>Sign in</a>
-        <a href="/settings" style={linkStyles}>
-          <img src={'./settings.png'} alt="settings" style={imageStyles}>
-          </img>
-        </a>
+        {!loggedIn && <a href="/login" style={linkStyles}>Sign in</a>}
+        {loggedIn && <a href="/settings" style={linkStyles}>
+          <img src={'./settings.png'} alt="settings" style={imageStyles} />
+        </a>}
       </div>
     </nav>
   );

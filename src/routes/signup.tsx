@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import { register } from '../utils/graphql/queries';
 import { doGraphQLFetch } from '../utils/graphql/fetch';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const Signup: React.FC = () => {
   const apiURL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,8 +22,10 @@ const Signup: React.FC = () => {
             const signupData = await doGraphQLFetch(apiURL, register, variables);
             console.log('Signup response:', signupData);
             if (signupData.register && signupData.register.message === "User created successfully") {
+              Cookies.set('token', signupData.register.token);
               setSignedUp(true);
               alert('Signed up successfully!');
+              navigate('/'); // Redirect to the main page
               // Additional actions after successful signup, e.g., redirect or update state
             } else {
                 console.error('Signup failed:', signupData);

@@ -4,9 +4,12 @@ import { login } from '../utils/graphql/queries';
 import { Credentials } from '../utils/interfaces/Credentials';
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 import LoginMessageResponse from '../utils/interfaces/LoginMessageResponse';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const apiURL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,9 +24,11 @@ const Login: React.FC = () => {
         const loginData = await doGraphQLFetch(apiURL, login, { credentials }) as LoginMessageResponse;
         // Check loginData for errors or successful login
         if (loginData.login.token) {
+          // Store token in cookie
+          Cookies.set('token', loginData.login.token);
           setLoggedIn(true);
           alert('Logged in successfully!');
-          // Additional actions after successful login, e.g., redirect or update state
+          navigate('/'); // Redirect to the main page
         } else {
           alert('Login failed. Please check your credentials.');
         }
