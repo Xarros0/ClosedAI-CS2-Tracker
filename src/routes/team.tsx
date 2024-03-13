@@ -1,7 +1,7 @@
 import React from 'react';
-import MainNavbar from './mainNavbar';
+import MainNavbar from '../components/mainNavbar';
 
-const player: React.FC = () => {
+const team: React.FC = () => {
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
@@ -18,10 +18,10 @@ const player: React.FC = () => {
     return (
         <div style={foreground}>
             <MainNavbar />
-            <h1>Player</h1>
-            <p>This is the Player page</p>
+            <h1>Team</h1>
+            <p>This is the team page</p>
         </div>
     );
 };
 
-export default player;
+export default team;

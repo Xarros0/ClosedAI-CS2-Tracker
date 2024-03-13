@@ -1,5 +1,5 @@
 import React from 'react';
-import MainNavbar from './mainNavbar';
+import MainNavbar from '../components/mainNavbar';
 
 const Events: React.FC = () => {
     const foreground: React.CSSProperties = {

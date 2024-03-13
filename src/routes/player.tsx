@@ -1,7 +1,7 @@
 import React from 'react';
-import MainNavbar from './mainNavbar';
+import MainNavbar from '../components/mainNavbar';
 
-const newsCatalog: React.FC = () => {
+const player: React.FC = () => {
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
@@ -18,10 +18,10 @@ const newsCatalog: React.FC = () => {
     return (
         <div style={foreground}>
             <MainNavbar />
-            <h1>News Catalog</h1>
-            <p>This is the news catalog page</p>
+            <h1>Player</h1>
+            <p>This is the Player page</p>
         </div>
     );
 };
 
-export default newsCatalog;
+export default player;

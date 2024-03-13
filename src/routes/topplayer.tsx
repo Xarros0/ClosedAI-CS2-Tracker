@@ -16,7 +16,7 @@ interface Player {
     rating: number;
   }
   
-  const topplayer: React.FC = () => {
+  const topPlayer: React.FC = () => {
     const players: Player[] = [
       { name: 'Player 1', team: 'Team A', maps: 10, rounds: 100, kdDiff: 20, kd: 1.5, rating: 1.2 },
       { name: 'Player 2', team: 'Team B', maps: 8, rounds: 80, kdDiff: 10, kd: 1.3, rating: 1.1 },
@@ -71,4 +71,4 @@ interface Player {
   );
 };
 
-export default topplayer;
+export default topPlayer;

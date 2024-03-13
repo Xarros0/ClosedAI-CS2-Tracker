@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './mainNavbar';
+import Navbar from '../components/mainNavbar';
 
 const news: React.FC = () => {
     const foreground: React.CSSProperties = {

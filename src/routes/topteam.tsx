@@ -12,7 +12,7 @@ interface Team {
   rank: number;
 }
 
-const topteam: React.FC = () => {
+const topTeam: React.FC = () => {
   const teams: Team[] = [
     { name: 'Team A', points: 100, rank: 1 },
     { name: 'Team B', points: 80, rank: 2 },
@@ -58,4 +58,4 @@ const topteam: React.FC = () => {
   );
 };
 
-export default topteam;
+export default topTeam;
