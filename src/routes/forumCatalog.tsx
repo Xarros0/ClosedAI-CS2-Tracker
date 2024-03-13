@@ -44,7 +44,7 @@ const ForumCatalog: React.FC = () => {
 
     return (
         <div style={foreground}>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <table style={tableStyle}>
                 <thead>
                     <tr>

@@ -90,7 +90,7 @@ const Events: React.FC = () => {
 
     return (
         <div style={foreground}>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <div>
                 <h1 style={titleStyling}>Asia RMR 2024</h1>
                 <div style={eventBox}>

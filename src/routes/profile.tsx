@@ -17,7 +17,7 @@ const profile: React.FC = () => {
   
     return (
         <div style={foreground}>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <h1>Profile</h1>
             <p>This is the profile page</p>
         </div>

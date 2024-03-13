@@ -75,7 +75,7 @@ const Forum: React.FC = () => {
 
     return (
         <div style={foreground}>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <div style={postBoxStyle}>
                 <div style={titleStyle}>{originalPost.title}</div>
                 <div style={userInfoStyle}>{originalPost.user}</div>

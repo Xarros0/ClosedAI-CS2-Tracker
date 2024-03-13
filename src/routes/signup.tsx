@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../components/mainNavbar';
+import Navbar from '../components/navbar';
 
 const Signup: React.FC = () => {
   const [nickname, setNickname] = useState('');
@@ -20,9 +20,7 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div> <Navbar onSearch={function (): void {
-      throw new Error('Function not implemented.');
-    } }/>
+    <div> <Navbar />
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
       <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, padding: '200px',height: '900px', width: '400px' }}>
         <h1 style={{ textAlign: 'center', color: '#FFBA08', marginBottom: '20px', fontSize: '32px' }}>SIGN UP</h1>

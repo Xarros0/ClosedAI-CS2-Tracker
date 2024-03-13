@@ -17,7 +17,7 @@ const player: React.FC = () => {
   
     return (
         <div style={foreground}>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <h1>Player</h1>
             <p>This is the Player page</p>
         </div>

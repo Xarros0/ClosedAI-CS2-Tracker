@@ -56,7 +56,7 @@ const news: React.FC = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar onSearch={() => {}} />
             <div style={foreground}>
                 <div style={containerStyle}>
                     <h1 style={titleStyle}>Live updates from Asia RMR 2024</h1>

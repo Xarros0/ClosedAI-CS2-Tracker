@@ -99,7 +99,7 @@ const NewsCatalog: React.FC = () => {
 
     return (
         <div style={foreground}>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <div style={todaysNewsTitle}>
                 <h1 style={{ marginLeft: '20px' }}>Today's news</h1>
             </div>

@@ -11,7 +11,7 @@ import ForumCatalog from './routes/forumCatalog';
 import Forum from './routes/forum';
 import NewsCatalog from './routes/newsCatalog';
 import News from './routes/news';
-import TopTeam from './routes/topTeam';
+import TopTeam from './routes/topteam';
 import Team from './routes/team';
 import TopPlayer from './routes/topPlayer';
 import Player from './routes/player';

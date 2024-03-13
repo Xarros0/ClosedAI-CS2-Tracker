@@ -41,7 +41,7 @@ interface Player {
   
   return (
     <div>
-        <Navbar />
+        <Navbar onSearch={() => {}} />
       <div style={{ backgroundColor: '#1C3144', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
         <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '800px', width: '1200px', display: 'flex', flexDirection: 'column', justifyContent: 'flex', alignItems: 'center' }}>
           <h1 style={{ color: 'black', marginTop: '20px', marginLeft: '20px', fontSize: '40px', alignSelf: 'flex-start' }}>Top Players:</h1>

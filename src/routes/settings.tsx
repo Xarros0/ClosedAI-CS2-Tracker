@@ -34,7 +34,7 @@ const Settings: React.FC = () => {
 
     return (
         <div>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <div style={foreground}>
                 <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '1800px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <h1 style={{ color: 'black', marginTop: '-90px', marginLeft: '20px' }}>Settings</h1>
