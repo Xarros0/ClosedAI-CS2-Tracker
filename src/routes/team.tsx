@@ -15,7 +15,7 @@ const Team: React.FC = () => {
 
     return (
         <div>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <div style={foreground}>
                 <h1 style={{ marginTop: '140px', marginLeft: '350px',fontSize: '50px'}}>Team</h1>
                 <div style={teamBoxStyles}>

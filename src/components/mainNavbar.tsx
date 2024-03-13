@@ -68,7 +68,8 @@ const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
 
   const handleSearch = () => {
     onSearch();
-    // You can implement additional search functionality here if needed
+    
+
   };
 
   return (
@@ -90,12 +91,9 @@ const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button 
-          onClick={handleSearch} 
-          style={searchButtonStyles}
-        >
-          Search
-        </button>
+        <div>
+            <button onClick={handleSearch} style={searchButtonStyles}>Search</button>
+        </div>
       </div>
       <div style={linkContainerStyles}>
         <a href="/login" style={linkStyles}>Sign in</a>

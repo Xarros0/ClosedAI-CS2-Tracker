@@ -154,7 +154,7 @@ const mainpage: React.FC = () => {
 
     return (
         <div>
-            <MainNavbar />
+            <MainNavbar onSearch={() => {}} />
             <div style={foreground}>
                 <div style={streamWindow}>
                     <img
