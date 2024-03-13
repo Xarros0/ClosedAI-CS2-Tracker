@@ -11,12 +11,12 @@ import ForumCatalog from './components/forumCatalog';
 import Forum from './components/forum';
 import NewsCatalog from './components/newsCatalog';
 import News from './components/news';
+import Topteam from './routes/topteam';
 import Team from './components/team';
+import Topplayer from './routes/topplayer';
 import Player from './components/player';
 import EventsCatalog from './components/eventsCatalog';
 import Events from './components/events';
-import Topteam from './routes/topteam';
-import Topplayer from './routes/topplayer';
 
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -38,12 +38,12 @@ if (rootElement) {
           <Route path="/forum" element={<Forum />} />
           <Route path="/newscatalog" element={<NewsCatalog />} />
           <Route path="/news" element={<News />} />
+          <Route path="/topteam" element={<Topteam />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/topplayer" element={<Topplayer />} />
           <Route path="/player" element={<Player />} />
           <Route path="/eventscatalog" element={<EventsCatalog />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/topteam" element={<Topteam />} />
-          <Route path="/topplayer" element={<Topplayer />} />
+          <Route path="/events" element={<Events />} />        
         </Routes>
       </BrowserRouter>
     </React.StrictMode>,
