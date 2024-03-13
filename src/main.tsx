@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Mainpage from './routes/mainpage';
 import Login from './routes/login';
 import Signup from './routes/signup';
 import Profile from './routes/profile';
@@ -28,7 +27,6 @@ if (rootElement) {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/mainpage" element={<Mainpage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/search" element={<Search />} />

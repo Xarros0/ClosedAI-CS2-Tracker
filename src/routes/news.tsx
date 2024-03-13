@@ -64,7 +64,7 @@ const news: React.FC = () => {
                     <div style={contentContainerStyle}>
                         <h1 style={dateStyle}>Date</h1>
                         <h1>LV coach: "It's dream to come true"</h1>
-                        <p style={newsContent}>Yifei "⁠GUM⁠" Dai, speaking to the desk:  "It's a dream come true. Everyone is speechless. Some of our players  have spent six or seven years in CS and never reached the RMR, never  made the Major, never had a sticker. For them this is so unbelievable."</p>
+                        <p style={newsContent}>Yifei "GUM" Dai, speaking to the desk:  "It's a dream come true. Everyone is speechless. Some of our players  have spent six or seven years in CS and never reached the RMR, never  made the Major, never had a sticker. For them this is so unbelievable."</p>
                         <p style={newsContent}>On adapting:  "Teams know how to counter Chinese teams. We like to execute at once,  everyone just standing there throwing their utilities. They were  rotating very fast to counter us. After TheMongolz game we tried to slow  down, I discussed with Westmelon how to calm down and perform how we  should."</p>
                         <p style={newsContent}>On Vertigo:  "It's so hard to practice it in China. TheMongolz don't play it, many Chinese teams don't. Right now we don't have enough experience on the  map."</p>
                     </div>

@@ -224,11 +224,11 @@ const mainpage: React.FC = () => {
                 <div>
                     <p style={newsTitle}><b>Today's News</b></p>
                     <div style={newsStyle}>
-                        <a style={newsLinkStyle} href="/news/1">News 1</a>
-                        <a style={newsLinkStyle} href="/news/2">News 2</a>
-                        <a style={newsLinkStyle} href="/news/3">News 3</a>
+                        <a style={newsLinkStyle} href="/newscatalog">News 1</a>
+                        <a style={newsLinkStyle} href="/newscatalog">News 2</a>
+                        <a style={newsLinkStyle} href="/newscatalog">News 3</a>
                     </div>
-                    <a style={newsLink} href="/news">More news</a>
+                    <a style={newsLink} href="/newscatalog">More news</a>
                 </div>
             </div>
         </div>
