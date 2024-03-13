@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MainNavbar: React.FC = () => {
+const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   const navbarStyles: React.CSSProperties = {
     position: 'fixed',
     top: 0,
@@ -64,6 +66,11 @@ const MainNavbar: React.FC = () => {
     marginRight: '20px',
   };
 
+  const handleSearch = () => {
+    onSearch();
+    // You can implement additional search functionality here if needed
+  };
+
   return (
     <nav style={navbarStyles}>
       
@@ -76,10 +83,19 @@ const MainNavbar: React.FC = () => {
         <a href="/forumcatalog" style={linkStyles}>Forum</a>
       </div>
       <div style={searchContainerStyles}>
-        <input type="text" placeholder="Search..." style={searchInputStyles} />
-        <a href='/search' style={linkStyles}>
-          <button style={searchButtonStyles}>Search</button>
-        </a>
+        <input 
+          type="text" 
+          placeholder="Search..." 
+          style={searchInputStyles} 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button 
+          onClick={handleSearch} 
+          style={searchButtonStyles}
+        >
+          Search
+        </button>
       </div>
       <div style={linkContainerStyles}>
         <a href="/login" style={linkStyles}>Sign in</a>
