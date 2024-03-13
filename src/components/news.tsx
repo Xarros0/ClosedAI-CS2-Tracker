@@ -2,30 +2,76 @@ import React from 'react';
 import Navbar from './mainNavbar';
 
 const news: React.FC = () => {
-  return (
-    <div>
-      <Navbar />
-      <div style={{ backgroundColor: '#1C3144', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
+    const foreground: React.CSSProperties = {
+        boxSizing: 'border-box',
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        background: '#A2AEBB',
+        border: 'none',
+        marginTop: '0px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    };
 
-        <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '800px', width: '1200px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <h1 style={{ color: 'black', marginTop: '-90px', marginLeft: '20px' }}>Live updates from Asia RMR 2024</h1>
-         {/* <img src={null} alt="Harry Potter" style={{ width: '600px', height: '400px', objectFit: 'cover', borderRadius: '8px', marginBottom: '20px' }} />*/}
-          <div style={{ width: '80%', height: '300px', padding: '20px', border: '2px solid white', borderRadius: '8px', overflowY: 'auto' }}>
-            <h1>LV coach: "It's dream to come true"</h1> <p>Date</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis diam id nisl dapibus bibendum. 
-              Duis malesuada felis sit amet lacus fringilla hendrerit. Integer sed sagittis elit, et interdum est. 
-              In hac habitasse platea dictumst. Sed vel vestibulum elit. Nullam tincidunt nibh et arcu fermentum, 
-              vitae varius erat cursus. In nec fermentum mauris, a ultrices tortor. Integer feugiat justo libero, 
-              eget feugiat orci vehicula et. Mauris congue tortor eu arcu tempor scelerisque. Donec at eleifend nisi. 
-              Morbi nec tellus pharetra, hendrerit odio at, molestie leo. Aliquam in ex nibh. Vestibulum vitae ultricies urna.
-            </p>
-            {/* You can add more paragraphs of text here */}
-          </div>
+    const containerStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    };
+
+    const imageStyle: React.CSSProperties = {
+        width: '70%',
+        height: '250px',
+        objectFit: 'cover',
+        background: '#939393',
+        marginBottom: '20px',
+    };
+
+    const titleStyle: React.CSSProperties = {
+        color: 'black',
+        marginLeft: '20px',
+        textAlign: 'center',
+        fontSize: '40px',
+    };
+
+    const contentContainerStyle: React.CSSProperties = {
+        width: '90%',
+        height: '400px',
+        padding: '20px',
+        background: '#D9D9D9',
+        overflowY: 'auto',
+        textAlign: 'left',
+    };
+
+    const dateStyle: React.CSSProperties = {
+        float: 'right',
+    };
+
+    const newsContent: React.CSSProperties = {
+        fontSize: '24px',
+    };
+
+    return (
+        <div>
+            <Navbar />
+            <div style={foreground}>
+                <div style={containerStyle}>
+                    <h1 style={titleStyle}>Live updates from Asia RMR 2024</h1>
+                    <img style={imageStyle} src="/asiarmr.webp" alt="News image" />
+                    <div style={contentContainerStyle}>
+                        <h1 style={dateStyle}>Date</h1>
+                        <h1>LV coach: "It's dream to come true"</h1>
+                        <p style={newsContent}>Yifei "⁠GUM⁠" Dai, speaking to the desk:  "It's a dream come true. Everyone is speechless. Some of our players  have spent six or seven years in CS and never reached the RMR, never  made the Major, never had a sticker. For them this is so unbelievable."</p>
+                        <p style={newsContent}>On adapting:  "Teams know how to counter Chinese teams. We like to execute at once,  everyone just standing there throwing their utilities. They were  rotating very fast to counter us. After TheMongolz game we tried to slow  down, I discussed with Westmelon how to calm down and perform how we  should."</p>
+                        <p style={newsContent}>On Vertigo:  "It's so hard to practice it in China. TheMongolz don't play it, many Chinese teams don't. Right now we don't have enough experience on the  map."</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default news;
