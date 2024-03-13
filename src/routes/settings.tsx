@@ -19,10 +19,23 @@ const Settings: React.FC = () => {
         // Logic to handle changing password
     };
 
+    const foreground: React.CSSProperties = {
+        boxSizing: 'border-box',
+        position: 'absolute',
+        width: '94%',
+        height: '100%',
+        background: '#A2AEBB',
+        border: '1px solid #000000',
+        marginTop: '0px',
+        marginLeft: '50px',
+        marginRight: '50px',
+        overflow: 'hidden',
+    };
+
     return (
         <div>
             <MainNavbar />
-            <div style={{ backgroundColor: '#1C3144', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
+            <div style={foreground}>
                 <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '1800px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <h1 style={{ color: 'black', marginTop: '-90px', marginLeft: '20px' }}>Settings</h1>
                     <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '20px'  }}>Newsletter:</h1>
