@@ -12,7 +12,7 @@ import NewsCatalog from './routes/newsCatalog';
 import News from './routes/news';
 import TopTeam from './routes/topteam';
 import Team from './routes/team';
-import TopPlayer from './routes/topPlayer';
+import TopPlayer from './routes/topplayer';
 import Player from './routes/player';
 import EventsCatalog from './routes/eventsCatalog';
 import Events from './routes/events';

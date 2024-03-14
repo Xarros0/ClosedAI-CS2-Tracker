@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainNavbar from '../components/mainNavbar';
 
+import { checkTokenValidity } from '../utils/checkToken';
+import { updateUser } from '../utils/graphql/queries';
+import { doGraphQLFetch } from '../utils/graphql/fetch';
+
+import Cookies from 'js-cookie';
+
 const Settings: React.FC = () => {
+    const apiURL = import.meta.env.VITE_API_URL;
+
+
     const [eventsChecked, setEventsChecked] = useState(false);
     const [newsChecked, setNewsChecked] = useState(false);
     const [forumChecked, setForumChecked] = useState(false);
@@ -10,14 +19,48 @@ const Settings: React.FC = () => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [retypeNewPassword, setRetypeNewPassword] = useState('');
+    const [currentUser, setCurrentUser] = useState({email : '', id: '', username: '', password: ''});
 
-    const handleChangeEmail = () => {
-        // Logic to handle changing email
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const token = await checkTokenValidity();
+                console.log('Token:', token.user);
+                setCurrentUser(token.user);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleChangePassword = () => {
-        // Logic to handle changing password
+        console.log('New password:', newPassword);
+        if (newPassword === retypeNewPassword) {
+            const newUser = currentUser;
+            newUser.password = newPassword;
+            setCurrentUser(newUser);
+            console.log(doGraphQLFetch(apiURL, updateUser, {user:{password:newPassword} }, Cookies.get('token'))
+            );
+
+            // Logic to handle changing password
+        }
+
     };
+    
+
+    const handleChangeEmail = async () => {
+        console.log('New email:', newEmail);
+        if (newEmail === retypeNewEmail) {
+            const newUser = currentUser;
+            newUser.email = newEmail;
+            setCurrentUser(newUser);
+            console.log(await doGraphQLFetch(apiURL, updateUser, {user:{email:newEmail} }, Cookies.get('token'))
+        )}
+    };
+
+ 
 
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
@@ -74,8 +117,8 @@ const Settings: React.FC = () => {
                             style={{ marginTop: '30px', marginBottom: '20px', marginLeft: '20px', marginRight: '20px', width: '20px', height: '20px', cursor: 'pointer', borderRadius: '50%', backgroundColor: 'white', border: 'none', boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', WebkitBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', MozBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)'}}
                         />
                     </div>
-                    <h1 style={{ color: 'black', marginTop: '50px', marginLeft: '20px'  }}>Change Email:</h1>
-                    <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '80px', fontSize: '20px'}}>CurrentEmail@hotmail.com</h1>
+                    <h1 style={{ color: 'black', marginTop: '50px', marginLeft: '20px'  }}>Change Email: </h1>
+                    <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '80px', fontSize: '20px'}}>current email:  {currentUser.email}</h1>
                     <input
                         type="text"
                         value={newEmail}
