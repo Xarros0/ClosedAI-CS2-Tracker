@@ -1,4 +1,6 @@
+// CreatePost.tsx
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 import { createPost } from '../utils/graphql/queries';
 
@@ -24,8 +26,16 @@ const CreatePost: React.FC = () => {
     }
 
     try {
+      // Get the authentication token from the cookie
+      const authToken = Cookies.get('token');
+      if (!authToken) {
+        // Handle case where token is not found
+        alert('User not authenticated. Please log in.');
+        return;
+      }
+
       // Call the doGraphQLFetch function with the createPost mutation query and variables
-      const { data } = await doGraphQLFetch(apiURL, createPost, { input: { title, content } });
+      const { data } = await doGraphQLFetch(apiURL, createPost, { input: { title, content } }, authToken);
       
       // Redirect to the main page after successful post creation
       if (data?.createPost?.response) {

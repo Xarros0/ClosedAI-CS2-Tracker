@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie'; // Import Cookies library
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 import { createComment } from '../utils/graphql/queries';
 
@@ -19,8 +20,16 @@ const CreateComment: React.FC<{ postId: string }> = ({ postId }) => {
     }
 
     try {
+      // Get the authentication token from the cookie
+      const authToken = Cookies.get('token');
+      if (!authToken) {
+        // Handle case where token is not found
+        alert('User not authenticated. Please log in.');
+        return;
+      }
+
       // Call the doGraphQLFetch function with the createComment mutation query and variables
-      const { data } = await doGraphQLFetch(apiURL, createComment, { input: { content, postId } });
+      const { data } = await doGraphQLFetch(apiURL, createComment, { input: { content, postId } }, authToken);
       
       // Check if the comment was successfully created
       if (data?.createComment?.response) {
