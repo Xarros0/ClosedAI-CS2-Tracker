@@ -1,47 +1,117 @@
 const checkToken = `
 query CheckToken {
-    checkToken {
-      message
-      user {
-        user_name
-      }
+  checkToken {
+    message
+    user {
+      email
+      id
+      username
     }
   }
+}
+`;
+
+const getEvent = `
+query GetEvent($getEventId: ID!) {
+  getEvent(id: $getEventId) {
+    name
+    prizeDistribution {
+      otherPrize
+      place
+      prize
+      qualifiesFor
+      team
+    }
+  }
+}
+`;
+
+const getEventByName = `
+query GetEventByName($name: String!) {
+  getEventByName(name: $name) {
+    name
+    id
+  }
+}
+`;
+ 
+const getEvents = `
+query GetEvents {
+  getEvents {
+    dateStart
+    dateEnd
+    id
+    name
+  }
+}
+`;
+
+const getNews = `
+query GetNews {
+  getNews {
+    title
+    link
+    date
+  }
+}
+`;
+
+const getPlayer = `
+query GetPlayer($getPlayerId: ID!) {
+  getPlayer(id: $getPlayerId) {
+    age
+    country {
+      code
+      name
+    }
+    ign
+    image
+    statistics {
+      rating
+      killsPerRound
+      headshots
+      mapsPlayed
+      deathsPerRound
+      roundsContributed
+    }
+  }
+}
+`;
+
+const getPlayerByName = `
+query GetPlayerByName($name: String!) {
+  getPlayerByName(name: $name) {
+    id
+    ign
+  }
+}
+`;
+
+const getPlayerRanking = `
+query GetPlayerRanking {
+  getPlayerRanking {
+    player {
+      id
+      name
+    }
+    teams {
+      id
+      name
+    }
+    maps
+    rounds
+    kdDiff
+    kd
+    rating1
+  }
+}
 `;
 
 const getPosts = `
 query GetPosts($filter: Filter) {
-    getPosts(filter: $filter) {
-      numberOfPages
-      posts {
-        author {
-          email
-          id
-          username
-        }
-        comments {
-          author {
-            id
-            email
-            username
-          }
-          content
-          createdAt
-          id
-          postId
-        }
-        content
-        createdAt
-        id
-        title
-      }
-    }
-  }
-`;
-
-const postByID = `
-query Query($postByIdId: ID!) {
-    postById(id: $postByIdId) {
+  getPosts(filter: $filter) {
+    numberOfPages
+    posts {
       author {
         email
         id
@@ -64,191 +134,282 @@ query Query($postByIdId: ID!) {
       title
     }
   }
+}
 `;
 
-const userById = `
-query Query($userByIdId: ID!) {
-    userById(id: $userByIdId) {
+const getStreams = `
+query GetStreams {
+  getStreams {
+    category
+    country {
+      code
+      name
+    }
+    link
+    name
+    viewers
+  }
+}
+`;
+
+const getTeam = `
+query GetTeam($getTeamId: ID!) {
+  getTeam(id: $getTeamId) {
+    country {
+      code
+      name
+    }
+    logo
+    name
+    rank
+    rankingDevelopment
+  }
+}
+`;
+
+const getTeamByName = `
+query GetTeamByName($name: String!) {
+  getTeamByName(name: $name) {
+    id
+    name
+  }
+}
+`;
+
+const getTeamRanking = `
+query GetTeamRanking {
+  getTeamRanking {
+    team {
+      id
+      name
+    }
+    points
+    place
+  }
+}
+`;
+
+const postById = `
+query PostById($postByIdId: ID!) {
+  postById(id: $postByIdId) {
+    author {
+      email
       id
       username
-      email
     }
+    comments {
+      author {
+        email
+        id
+        username
+      }
+      content
+      createdAt
+      id
+      postId
+    }
+    content
+    createdAt
+    id
+    title
   }
+}
+`;
+
+const userByID = `
+query UserById($userByIdId: ID!) {
+  userById(id: $userByIdId) {
+    email
+    id
+    username
+  }
+}
 `;
 
 const users = `
-query Query {
-    users {
+query Users {
+  users {
+    email
+    id
+    username
+  }
+}
+`;
+
+const createComment = `
+mutation CreateComment($commentContent: writeComment!) {
+  createComment(commentContent: $commentContent) {
+    message
+    response {
+      author {
+        email
+        id
+        username
+      }
+      content
+      createdAt
+      id
+      postId
+    }
+  }
+}
+`;
+
+const createPost = `
+mutation CreatePost($postContent: writePost!) {
+  createPost(postContent: $postContent) {
+    message
+    response {
+      author {
+        email
+        id
+        username
+      }
+      comments {
+        author {
+          email
+          id
+          username
+        }
+        content
+        createdAt
+        id
+        postId
+      }
+      content
+      createdAt
+      id
+      title
+    }
+  }
+}
+`;
+
+const deleteComment = `
+mutation DeleteComment($deleteCommentId: ID!) {
+  deleteComment(id: $deleteCommentId) {
+    message
+    response {
+      author {
+        email
+        id
+        username
+      }
+      content
+      createdAt
+      id
+      postId
+    }
+  }
+}
+`;
+
+const deletePost = `
+mutation DeletePost($deletePostId: ID!) {
+  deletePost(id: $deletePostId) {
+    message
+    response {
+      author {
+        email
+        id
+        username
+      }
+      comments {
+        author {
+          email
+          id
+          username
+        }
+        content
+        createdAt
+        id
+        postId
+      }
+      content
+      createdAt
+      id
+      title
+    }
+  }
+}
+`;
+
+const deleteUser = `
+mutation DeleteUser($deleteUserId: ID) {
+  deleteUser(id: $deleteUserId) {
+    message
+    user {
       email
       id
       username
     }
   }
+}
 `;
 
 const login = `
-mutation Mutation($credentials: Credentials!) {
-    login(credentials: $credentials) {
-      message
-      token
-      user {
-        email
-        id
-        username
-      }
+mutation Login($credentials: Credentials!) {
+  login(credentials: $credentials) {
+    message
+    token
+    user {
+      email
+      id
+      username
     }
   }
+}
 `;
 
 const register = `
-mutation Mutation($user: UserInput!) {
-    register(user: $user) {
-      message
-      user {
-        email
-        id
-        username
-      }
+mutation Register($user: UserInput!) {
+  register(user: $user) {
+    message
+    user {
+      email
+      id
+      username
     }
   }
+}
 `;
 
 const updateUser = `
-mutation Mutation($user: UserModify!, $updateUserId: ID) {
-    updateUser(user: $user, id: $updateUserId) {
-      message
-      user {
-        email
-        id
-        username
-      }
+mutation UpdateUser($user: UserModify!, $updateUserId: ID) {
+  updateUser(user: $user, id: $updateUserId) {
+    message
+    user {
+      email
+      id
+      username
     }
   }
+}
 `;
 
-const deleteUser = `
-mutation Mutation($deleteUserId: ID) {
-    deleteUser(id: $deleteUserId) {
-      message
-      user {
-        email
-        id
-        username
-      }
-    }
-  }
-`;
-
-const createPost = `
-utation Mutation($postContent: writePost!) {
-    createPost(postContent: $postContent) {
-      message
-      response {
-        id
-        title
-        content
-        author {
-          id
-          username
-          email
-        }
-        createdAt
-        comments {
-          id
-          postId
-          content
-          createdAt
-          author {
-            email
-            id
-            username
-          }
-        }
-      }
-    }
-  }
-`;
-
-const deletePost = `
-mutation Mutation($deletePostId: ID!) {
-    deletePost(id: $deletePostId) {
-      message
-      response {
-        author {
-          email
-          id
-          username
-        }
-        comments {
-          author {
-            id
-            email
-            username
-          }
-          content
-          createdAt
-          id
-          postId
-        }
-        createdAt
-        content
-        id
-        title
-      }
-    }
-  }
-`;
-
-const createComment = `
-mutation Mutation($commentContent: writeComment!) {
-    createComment(commentContent: $commentContent) {
-      message
-      response {
-        author {
-          email
-          id
-          username
-        }
-        content
-        createdAt
-        id
-        postId
-      }
-    }
-  }
-`;
-
-const deleteComment = `
-mutation Mutation($deleteCommentId: ID!) {
-    deleteComment(id: $deleteCommentId) {
-      message
-      response {
-        author {
-          email
-          id
-          username
-        }
-        content
-        createdAt
-        id
-        postId
-      }
-    }
-  }
-`;
-
-export {
-    checkToken, 
-    getPosts, 
-    postByID, 
-    userById, 
-    users, 
-    login, 
-    register, 
-    updateUser, 
-    deleteUser, 
-    createPost, 
-    deletePost, 
-    createComment, 
-    deleteComment
+export { 
+  checkToken,
+  getEvent,
+  getEventByName,
+  getEvents,
+  getNews,
+  getPlayer,
+  getPlayerByName,
+  getPlayerRanking,
+  getPosts,
+  getStreams,
+  getTeam,
+  getTeamByName,
+  getTeamRanking,
+  postById,
+  userByID,
+  users,
+  createComment,
+  createPost,
+  deleteComment,
+  deletePost,
+  deleteUser,
+  login,
+  register,
+  updateUser,
 };
