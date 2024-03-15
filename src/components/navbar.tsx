@@ -38,25 +38,6 @@ const MainNavbar: React.FC = () => {
     marginLeft: '20px'
   };
 
-  const searchContainerStyles: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center', // Align search bar to the center
-    alignItems: 'center', // Vertically center the content
-  };
-
-  const searchInputStyles: React.CSSProperties = {
-    marginRight: '20px',
-    padding: '5px'
-  };
-
-  const searchButtonStyles: React.CSSProperties = {
-    padding: '5px 10px',
-    backgroundColor: '#3498db',
-    color: 'white',
-    border: 'none',
-    marginRight: '20px'
-  };
-
   return (
     <nav style={navbarStyles}>
       
@@ -64,15 +45,7 @@ const MainNavbar: React.FC = () => {
       <h1 style={headingStyles}><a href="/" style={headingStyles}>CS2Esports</a></h1>
         <a href="/newscatalog" style={linkStyles}>News</a>
         <a href="/eventscatalog" style={linkStyles}>Events</a>
-        <a href="/topteam" style={linkStyles}>Top teams</a>
-        <a href="/topplayer" style={linkStyles}>Top players</a>
         <a href="/forumcatalog" style={linkStyles}>Forum</a>
-      </div>
-      <div style={searchContainerStyles}>
-        <input type="text" placeholder="Search..." style={searchInputStyles} />
-        <a href='/search' style={linkStyles}>
-          <button style={searchButtonStyles}>Search</button>
-        </a>
       </div>
     </nav>
   );
