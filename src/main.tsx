@@ -9,7 +9,6 @@ import Settings from './routes/settings';
 import ForumCatalog from './routes/forumCatalog';
 import Forum from './routes/forum';
 import NewsCatalog from './routes/newsCatalog';
-import News from './routes/news';
 import TopTeam from './routes/topteam';
 import Team from './routes/team';
 import TopPlayer from './routes/topplayer';
@@ -35,7 +34,6 @@ if (rootElement) {
           <Route path="/forumcatalog" element={<ForumCatalog />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/newscatalog" element={<NewsCatalog />} />
-          <Route path="/news" element={<News />} />
           <Route path="/topteam" element={<TopTeam />} />
           <Route path="/team" element={<Team />} />
           <Route path="/topplayer" element={<TopPlayer />} />

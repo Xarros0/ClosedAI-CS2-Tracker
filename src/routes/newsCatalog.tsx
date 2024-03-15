@@ -17,17 +17,18 @@ const NewsCatalog: React.FC = () => {
         handleNews();
     }, []);
 
-    const foreground: React.CSSProperties = {
+    const containerStyle: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
         width: '94%',
-        height: '100%',
+        maxHeight: '98%', // Limit the maximum height to 80% of the viewport height
+        overflowY: 'auto', // Enable vertical scrolling
         background: '#A2AEBB',
         border: '1px solid #000000',
         marginTop: '0px',
         marginLeft: '50px',
         marginRight: '50px',
-        overflow: 'hidden',
+        padding: '20px',
     };
 
     const newsPreviewTitle: React.CSSProperties = {
@@ -42,13 +43,13 @@ const NewsCatalog: React.FC = () => {
       };
 
     return (
-        <div style={foreground}>
+        <div style={containerStyle}>
             <MainNavbar onSearch={() => {}} />
             <div style={newsPreviewTitle}>
             <h1 style={{ marginLeft: "20px" }}>News Catalog</h1>
             </div>
             <ul>
-            {news.map((e, i)=><NewsPreviewComponent key={i} title={e.title} link={e.link} comments={e.comments} date={e.date} country={e.country} />)}
+            {news.map((e, i)=><NewsPreviewComponent key={i} title={e.title} link={e.link} date={new Date(Number(e.date)).toLocaleString()} country={e.country} />)}
             </ul>
         </div>
     );
