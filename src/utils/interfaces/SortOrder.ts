@@ -1,6 +1,6 @@
 enum SortOrder {
-    ASC = 1,
-    DESC = -1,
+    ASC = 'ASC',
+    DESC = 'DESC'
 }
 
 export default SortOrder;

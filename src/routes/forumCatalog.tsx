@@ -12,8 +12,8 @@ const ForumCatalog: React.FC = () => {
     const apiURL = import.meta.env.VITE_API_URL;
     const [posts, setPosts] = useState<Post[]>([]); // Update to specify the type of posts
     const [filter, setFilter] = useState<Filter>({
-        page: 1,
-        limit: 12, // Adjust as needed
+        sortOrder: SortOrder.DESC,
+        limit: 14,
     });
     const [numberOfPages, setNumberOfPages] = useState<number>(1); // Initialize with 1 page initially
 
@@ -69,24 +69,38 @@ const ForumCatalog: React.FC = () => {
         );
     };
 
-    const foreground: React.CSSProperties = {
+    const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFilter({ ...filter, [name]: value });
+    };
+
+    const containerStyle: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
         width: '94%',
-        height: '100%',
+        maxHeight: '98%', // Limit the maximum height to 80% of the viewport height
+        overflowY: 'auto', // Enable vertical scrolling
         background: '#A2AEBB',
         border: '1px solid #000000',
         marginTop: '0px',
         marginLeft: '50px',
         marginRight: '50px',
-        overflow: 'hidden',
-        padding: '20px', // Add padding for better spacing
+        padding: '20px',
     };
 
     const tableStyle: React.CSSProperties = {
         marginTop: '30px', // Add margin to the top of the table
         width: '100%', // Make table fill the container
         borderCollapse: 'collapse', // Collapse borders between cells
+    };
+
+    const filterContainerStyle: React.CSSProperties = {
+        float: 'right', // Float the filter container to the right
+        alignItems: 'center', // Center items along the cross axis
+    };
+
+    const filterItemStyle: React.CSSProperties = {
+        marginRight: '10px', // Add margin between filter items
     };
 
     const thStyle: React.CSSProperties = {
@@ -110,7 +124,7 @@ const ForumCatalog: React.FC = () => {
     };
 
     return (
-        <div style={foreground}>
+        <div style={containerStyle}>
             <MainNavbar onSearch={() => {}} />
             <table style={tableStyle}>
                 <thead>
@@ -126,6 +140,32 @@ const ForumCatalog: React.FC = () => {
                 </tbody>
             </table>
             {renderPagination()}
+            <div style={filterContainerStyle}>
+                <h2>Filters</h2>
+                <div style={filterItemStyle}>
+                    <label>Author Name:</label>
+                    <input type="text" name="authorName" value={filter.authorName} onChange={handleFilterChange} />
+                </div>
+                <div style={filterItemStyle}>
+                    <label>Title:</label>
+                    <input type="text" name="title" value={filter.title} onChange={handleFilterChange} />
+                </div>
+                <div style={filterItemStyle}>
+                    <label>Start Date:</label>
+                    <input type="date" name="startDate" value={filter.startDate} onChange={handleFilterChange} />
+                </div>
+                <div style={filterItemStyle}>
+                    <label>End Date:</label>
+                    <input type="date" name="endDate" value={filter.endDate} onChange={handleFilterChange} />
+                </div>
+                <div style={filterItemStyle}>
+                    <label>Sort Order:</label>
+                    <select name="sortOrder" value={filter.sortOrder} onChange={handleFilterChange}>
+                        <option value={SortOrder.ASC}>Ascending</option>
+                        <option value={SortOrder.DESC}>Descending</option>
+                    </select>
+                </div>    
+            </div>
             <CreatePost />
         </div>
     );
