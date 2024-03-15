@@ -13,27 +13,28 @@ const ForumCatalog: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]); // Update to specify the type of posts
     const [filter, setFilter] = useState<Filter>({
         page: 1,
-        limit: 10, // Adjust as needed
+        limit: 12, // Adjust as needed
     });
     const [numberOfPages, setNumberOfPages] = useState<number>(1); // Initialize with 1 page initially
 
     useEffect(() => {
         fetchPosts();
-    }, []);
+    }, [filter]);
 
     const fetchPosts = async () => {
         try {
-            const response = await doGraphQLFetch(apiURL, getPosts, { filter });
+            const response = await doGraphQLFetch(apiURL, getPosts, {filter: { ...filter }});
             console.log('Response:', response.getPosts.posts);
             setPosts(response.getPosts.posts);
-            setNumberOfPages(response.getPosts.numberOfPages); // Update numberOfPages state
+            setNumberOfPages(response.getPosts.numberOfPages);
         } catch (error) {
             console.error('Error fetching posts:', error);
         }
     };
     
     const handlePageChange = (page: number) => {
-        setFilter({ ...filter, page });
+        console.log('Page changed:', page);
+        setFilter({ ...filter, page: page });
     };
 
     // Rendering the posts
