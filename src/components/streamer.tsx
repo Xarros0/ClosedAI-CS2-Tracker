@@ -25,18 +25,11 @@ const Streamer: React.FC<Streams> = (args) => {
         alignItems: 'center',
     };
 
-    const streamerFlag: React.CSSProperties = {
-        width: '40px',
-        height: '30px',
-        marginRight: '10px',
-    };
-
   return (
     <>
       <div style={streamerBox}>
         <div style={streamerListItem}>
           <img style={streamCatalogImg} src={Image[(args.category as keyof typeof Image)]} alt={args.category} />
-          <img style={streamerFlag} src="flag.png" alt="Country Flag" />
           <span>{args.name}</span>
         </div>
       </div>

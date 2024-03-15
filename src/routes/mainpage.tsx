@@ -59,7 +59,7 @@ const MainPage: React.FC = () => {
 
     const streamersBox: React.CSSProperties = {
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 220px)',
+        gridTemplateColumns: 'repeat(6, 220px)',
         gap: '10px',
         height: '400px',
         width: '80%',
@@ -70,6 +70,7 @@ const MainPage: React.FC = () => {
         marginTop: '20px',
         padding: '10px',
         gridAutoRows: '1fr',
+        overflowY: 'auto',
     };
 
     const [streamers, setStreamers] = useState<Streams[]>([]);
@@ -90,7 +91,7 @@ const MainPage: React.FC = () => {
                 <div style={streamWindow}>
                    
                     {/* ReactTwitchEmbedVideo component */}
-                    <ReactTwitchEmbedVideo channel={name} layout="video" theme="dark" width={1552} height={663} />
+                    <ReactTwitchEmbedVideo channel={name} layout="video" theme="dark" width={1400} height={663} />
                 </div>
                 <div style={streamCatalog}>
                     <p><b>Top Streams</b></p>
