@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "../utils/interfaces/Images";
-import Stream from "../utils/interfaces/Stream";
+import Streams from "../utils/interfaces/Streams";
 
-const Streamer: React.FC<Stream> = (args) => {
+const Streamer: React.FC<Streams> = (args) => {
 
     const streamCatalogImg: React.CSSProperties = {
         marginRight: '5px',
