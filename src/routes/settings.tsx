@@ -80,43 +80,7 @@ const Settings: React.FC = () => {
             <MainNavbar onSearch={() => {}} />
             <div style={foreground}>
                 <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '1800px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <h1 style={{ color: 'black', marginTop: '-90px', marginLeft: '20px' }}>Settings</h1>
-                    <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '20px'  }}>Newsletter:</h1>
-                    <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '80px'}}>Get e-mailed about</h1>
-                   
-                    <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
-                        
-                        <h1 style={{ color: 'black', marginLeft: '220px', fontSize: '28px', marginBottom: '0', marginTop: '0' }}>Events</h1>
-                        <input
-                            type="checkbox"
-                            id="events"
-                            checked={eventsChecked}
-                            onChange={() => setEventsChecked(!eventsChecked)}
-                            style={{ marginTop: '30px', marginBottom: '20px', marginLeft: '20px', marginRight: '20px', width: '20px', height: '20px', cursor: 'pointer', borderRadius: '50%', backgroundColor: 'white', border: 'none', boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', WebkitBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', MozBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)'}}
-                        />
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
-                       
-                        <h1 style={{ color: 'black', marginLeft: '220px', fontSize: '28px', marginBottom: '0', marginTop: '0' }}>News</h1>
-                        <input
-                            type="checkbox"
-                            id="news"
-                            checked={newsChecked}
-                            onChange={() => setNewsChecked(!newsChecked)}
-                            style={{ marginTop: '30px', marginBottom: '20px', marginLeft: '20px', marginRight: '20px', width: '20px', height: '20px', cursor: 'pointer', borderRadius: '50%', backgroundColor: 'white', border: 'none', boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', WebkitBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', MozBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)'}}
-                        />
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
-                       
-                        <h1 style={{ color: 'black', marginLeft: '220px', fontSize: '28px', marginBottom: '0', marginTop: '0' }}>Forum post replied</h1>
-                        <input
-                            type="checkbox"
-                            id="forum"
-                            checked={forumChecked}
-                            onChange={() => setForumChecked(!forumChecked)}
-                            style={{ marginTop: '30px', marginBottom: '20px', marginLeft: '20px', marginRight: '20px', width: '20px', height: '20px', cursor: 'pointer', borderRadius: '50%', backgroundColor: 'white', border: 'none', boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', WebkitBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', MozBoxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)'}}
-                        />
-                    </div>
+                    <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '20px' }}>Settings</h1>
                     <h1 style={{ color: 'black', marginTop: '50px', marginLeft: '20px'  }}>Change Email: </h1>
                     <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '80px', fontSize: '20px'}}>current email:  {currentUser.email}</h1>
                     <input
