@@ -1,13 +1,27 @@
 // CreatePost.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 import { createPost } from '../utils/graphql/queries';
+import { checkTokenValidity } from '../utils/checkToken';
 
 const CreatePost: React.FC = () => {
   const apiURL = import.meta.env.VITE_API_URL;
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const token = await checkTokenValidity();
+            console.log('Token:', token.user);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    fetchData();
+  }, []);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -27,20 +41,21 @@ const CreatePost: React.FC = () => {
 
     try {
       // Get the authentication token from the cookie
-      const authToken = Cookies.get('token');
-      if (!authToken) {
+      const token = Cookies.get('token');
+      if (!token) {
         // Handle case where token is not found
         alert('User not authenticated. Please log in.');
         return;
       }
 
       // Call the doGraphQLFetch function with the createPost mutation query and variables
-      const { data } = await doGraphQLFetch(apiURL, createPost, { input: { title, content } }, authToken);
+      const data = await doGraphQLFetch(apiURL, createPost, {postContent: { title: title, content: content }}, token);
       
       // Redirect to the main page after successful post creation
       if (data?.createPost?.response) {
-        window.location.href = '/'; // Redirect to the main page
-      }
+        console.log('Post created successfully:', data);
+        window.location.href = `/forum?id=${data.createPost.response.id}`; // Redirect to the new forum post
+    }
     } catch (error) {
       console.error('Error creating post:', error);
       // Handle error

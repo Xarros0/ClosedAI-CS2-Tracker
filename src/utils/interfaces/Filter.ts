@@ -1,3 +1,5 @@
+import SortOrder from "./SortOrder";
+
 interface Filter {
     title?: string;
     authorName?: string;
@@ -8,9 +10,4 @@ interface Filter {
     limit?: number;
 }
 
-enum SortOrder {
-    ASC = 1,
-    DESC = -1,
-}
-
-export type { Filter, SortOrder };
+export type { Filter };

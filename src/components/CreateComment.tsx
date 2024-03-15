@@ -3,7 +3,11 @@ import Cookies from 'js-cookie'; // Import Cookies library
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 import { createComment } from '../utils/graphql/queries';
 
-const CreateComment: React.FC<{ postId: string }> = ({ postId }) => {
+interface CreateCommentProps {
+  postId: string | null;
+}
+
+const CreateComment: React.FC<CreateCommentProps> = ({ postId }) => {
   const apiURL = import.meta.env.VITE_API_URL;
   const [content, setContent] = useState('');
 
@@ -29,15 +33,14 @@ const CreateComment: React.FC<{ postId: string }> = ({ postId }) => {
       }
 
       // Call the doGraphQLFetch function with the createComment mutation query and variables
-      const { data } = await doGraphQLFetch(apiURL, createComment, { input: { content, postId } }, authToken);
+      const data  = await doGraphQLFetch(apiURL, createComment, {commentContent: { content, postId }}, authToken);
       
       // Check if the comment was successfully created
       if (data?.createComment?.response) {
         // Clear the content field after successful comment creation
         setContent('');
-        // Optionally, you can reload the page or update the comments section after creating a new comment
-        // For simplicity, let's just log a message to the console
         console.log('Comment created successfully:', data.createComment.response);
+        window.location.reload();
       }
     } catch (error) {
       console.error('Error creating comment:', error);
