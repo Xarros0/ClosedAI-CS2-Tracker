@@ -144,14 +144,12 @@ query GetPosts($filter: Filter) {
 const getStreams = `
 query GetStreams {
   getStreams {
-    category
+    name
     country {
       code
       name
     }
-    link
-    name
-    viewers
+    category
   }
 }
 `;
