@@ -1,6 +1,6 @@
 import React from 'react';
 import MainNavbar from '../components/mainNavbar';
-
+import ReactTwitchEmbedVideo from 'react-twitch-embed-video';
 const mainpage: React.FC = () => {
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
@@ -152,66 +152,66 @@ const mainpage: React.FC = () => {
         fontWeight: 'bold',
     };
 
+    
+
+
+
+
+
+
     return (
         <div>
             <MainNavbar onSearch={() => {}} />
             <div style={foreground}>
                 <div style={streamWindow}>
-                    <img
-                        style={streamWindowImage}
-                        src="./cs2map.jpg"
-                        alt="Twitch stream of current event"
-                    />
+                   
+                    {/* ReactTwitchEmbedVideo component */}
+                    <ReactTwitchEmbedVideo channel="ESLCS" layout="video" theme="dark" width={1552} height={663} />
                 </div>
-                <div>
-                    <div style={streamCatalog}>
-                        <p>
-                            <b>Top Streams</b>
-                        </p>
-                        <div style={streamCatalogLink}>
-                            <a>All</a>
-                        </div>
-                        <div style={streamCatalogLink}>
+                <div style={streamCatalog}>
+                    <p><b>Top Streams</b></p>
+                    <div style={streamCatalogLink}>
+                        <a>All</a>
+                    </div>
+                    <div style={streamCatalogLink}>
+                        <img style={streamCatalogImg} src="./microphone.png" alt="Casters" />
+                        <a>Casters</a>
+                    </div>
+                    <div style={streamCatalogLink}>
+                        <img style={streamCatalogImg} src="./cs2icon.png" alt="Streamers" />
+                        <a>Streamers</a>
+                    </div>
+                    <div style={streamCatalogLink}>
+                        <img style={streamCatalogImg} src="./trophy.jpg" alt="Organizers" />
+                        <a>Organizers</a>
+                    </div>
+                </div>
+                <div style={streamers}>
+                    <div style={streamerBox}>
+                        <div style={streamerListItem}>
                             <img style={streamCatalogImg} src="./microphone.png" alt="Casters" />
-                            <a>Casters</a>
-                        </div>
-                        <div style={streamCatalogLink}>
-                            <img style={streamCatalogImg} src="./cs2icon.png" alt="Streamers" />
-                            <a>Streamers</a>
-                        </div>
-                        <div style={streamCatalogLink}>
-                            <img style={streamCatalogImg} src="./trophy.jpg" alt="Organizers" />
-                            <a>Organizers</a>
+                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
+                            <span>Streamer 1</span>
                         </div>
                     </div>
-
-                    <div style={streamers}>
-                        <div style={streamerBox}>
-                            <div style={streamerListItem}>
-                                <img style={streamCatalogImg} src="./microphone.png" alt="Casters" />
-                                <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                                <span>Streamer 1</span>
-                            </div>
+                    <div style={streamerBox}>
+                        <div style={streamerListItem}>
+                            <img style={streamCatalogImg} src="./cs2icon.png" alt="Streamers" />
+                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
+                            <span>Streamer 2</span>
                         </div>
-                        <div style={streamerBox}>
-                            <div style={streamerListItem}>
-                                <img style={streamCatalogImg} src="./cs2icon.png" alt="Streamers" />
-                                <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                                <span>Streamer 2</span>
-                            </div>
+                    </div>
+                    <div style={streamerBox}>
+                        <div style={streamerListItem}>
+                            <img style={streamCatalogImg} src="./trophy.jpg" alt="Organizers" />
+                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
+                            <span>Streamer 3</span>
                         </div>
-                        <div style={streamerBox}>
-                            <div style={streamerListItem}>
-                                <img style={streamCatalogImg} src="./trophy.jpg" alt="Organizers" />
-                                <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                                <span>Streamer 3</span>
-                            </div>
-                        </div>
-                        <div style={streamerBox}>
-                            <div style={streamerListItem}>
-                                <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                                <span>Streamer 4</span>
-                            </div>
+                    </div>
+                    <div style={streamerBox}>
+                        <div style={streamerListItem}>
+                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
+                            <span>Streamer 4</span>
                         </div>
                     </div>
                 </div>
@@ -236,3 +236,4 @@ const mainpage: React.FC = () => {
 };
 
 export default mainpage;
+
