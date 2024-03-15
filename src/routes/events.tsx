@@ -1,7 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import MainNavbar from '../components/mainNavbar';
+import { doGraphQLFetch } from '../utils/graphql/fetch';
+import { getEvent } from '../utils/graphql/queries';
+
+interface PrizeDistribution {
+    otherPrize: string;
+    place: string;
+    prize: string;
+    qualifiesFor: string;
+    team: string;
+}
+
+interface Event {
+    name: string;
+    prizeDistribution: PrizeDistribution[];
+}
 
 const Events: React.FC = () => {
+    const apiURL = import.meta.env.VITE_API_URL;
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const id = searchParams.get('id');
+    const [event, setEvent] = useState<Event | null>(null);
+    const [loading, setLoading] = useState<boolean>(true); // State to track loading state
+
+    useEffect(() => {
+        fetchEventData();
+    }, []);
+
+    const fetchEventData = async () => {
+        try {
+            console.log('Fetching post by ID:', id);
+            const response = await doGraphQLFetch(apiURL, getEvent, { getEventId: id });
+            setEvent(response.getEvent);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching event data:', error);
+        }
+    };
+
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
@@ -56,7 +94,7 @@ const Events: React.FC = () => {
         marginTop: '20px',
         padding: '10px',
         gridAutoRows: '1fr',
-        overflow: 'hidden',
+        overflowY: 'auto', // Enable vertical scrolling
     };
 
     const teamBox: React.CSSProperties = {
@@ -91,46 +129,24 @@ const Events: React.FC = () => {
     return (
         <div style={foreground}>
             <MainNavbar onSearch={() => {}} />
-            <div>
-                <h1 style={titleStyling}>Asia RMR 2024</h1>
-                <div style={eventBox}>
-                    <h2 style={eventTitleStyling}>Prize distribution</h2>
-                    <div style={eventWinners}>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>TheMongolz</span>
-                            <span style={placementTextStyle}>1st</span>     
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <>
+                        <h1 style={titleStyling}>{event?.name}</h1>
+                        <div style={eventBox}>
+                            <h2 style={eventTitleStyling}>Prize distribution</h2>
+                            <div style={eventWinners}>
+                                {event?.prizeDistribution.map((prize, index) => (
+                                    <div key={index} style={teamBox}>
+                                        <span style={teamTextStyle}>{prize.team.name}</span>
+                                        <span style={placementTextStyle}>{prize.place}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>Lynn Vision</span>
-                            <span style={placementTextStyle}>2nd</span>
-                        </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>Grayhound</span>
-                            <span style={placementTextStyle}>3rd</span>
-                        </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>Atox</span>
-                            <span style={placementTextStyle}>4th</span>
-                        </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>JiJieHao</span>
-                            <span style={placementTextStyle}>5-6th</span>
-                        </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>Tyloo</span>
-                            <span style={placementTextStyle}>5-6th</span>
-                        </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>Twisted Minds</span>
-                            <span style={placementTextStyle}>7-8th</span>
-                        </div>
-                        <div style={teamBox}>
-                            <span style={teamTextStyle}>Mag</span>
-                            <span style={placementTextStyle}>7-8th</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </>
+                )}
         </div>
     );
 };

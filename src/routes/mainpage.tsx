@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MainNavbar from '../components/mainNavbar';
 import ReactTwitchEmbedVideo from 'react-twitch-embed-video';
 import Streamer from '../components/streamer';
-import Stream from '../utils/interfaces/Stream';
+import Stream from '../utils/interfaces/Streams';
 import { getStreams } from '../utils/graphql/queries';
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 
@@ -82,10 +82,6 @@ const MainPage: React.FC = () => {
         };
         handleNews();
     }, []);
-
-    const applyName = (nameToApply: string) => {
-        setName(nameToApply);
-    }
 
     return (
         <div>
