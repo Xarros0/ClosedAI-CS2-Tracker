@@ -14,51 +14,38 @@ const NewsPreviewComponent: React.FC<NewsPreview> = (args) => {
     top: "180px",
     display: "flex",
     flexDirection: "column",
+    marginBottom: "20px", // Add some space between each news article
   };
 
   const newsArticle: React.CSSProperties = {
     backgroundColor: "#D9D9D9",
     display: "flex",
-    alignItems: "center", // Center items vertically
-    padding: "10px", // Add padding for spacing
-    width: "100%", // Set a fixed width for each article
-  };
-
-  const newsImageContainer: React.CSSProperties = {
-    width: "200px", // Fixed width for the image container
-    height: "100%", // Set height to 100% to fill the container vertically
-    marginRight: "20px",
-  };
-
-  const newsImage: React.CSSProperties = {
-    float: "left",
-    backgroundColor: "#939393",
-    width: "150px", // Ensure the image fills the container
-    height: "150px", // Ensure the image fills the container
+    flexDirection: "column", // Stack items vertically
+    alignItems: "flex-start", // Align items to the start of the container
+    padding: "20px", // Add more padding for spacing
+    gap: "10px", // Add space between elements
   };
 
   const newsTitle: React.CSSProperties = {
-    backgroundColor: "#D9D9D9",
-    flexGrow: 1, // Allow the title to grow and fill remaining space
     fontSize: "24px", // Adjust font size as needed
-    width: "100%", // Ensure the title fills the remaining space
     textDecoration: "none", // Remove underline from the title
     color: "black", // Set the color of the title
+    fontWeight: "bold", // Make the title bold
   };
 
+  const newsDetails: React.CSSProperties = {
+    fontSize: "16px", // Adjust font size for details
+    color: "#333333", // Set the color of the details
+  };
+  console.log(args);
   return (
-    <>
-      <div style={newsPreview}>
-        <div style={newsArticle}>
-          <div style={newsImageContainer}>
-            <img src="/asiarmr.webp" alt="News Image" style={newsImage} />
-          </div>
-          <a style={newsTitle} href="/news">
-            <div style={newsTitle}>{args.title}</div>
-          </a>
-        </div>
-        </div>
-    </>
+    <div style={newsPreview}>
+      <div style={newsArticle}>
+        <a href={args.link} style={newsTitle}>{args.title}</a>
+        <p style={newsDetails}>Date: {args.date}</p>
+        <p style={newsDetails}>Country: {args.country.name}</p>
+      </div>
+    </div>
   );
 };
 
