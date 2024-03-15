@@ -6,6 +6,7 @@ import { Filter } from '../utils/interfaces/Filter';
 import SortOrder from '../utils/interfaces/SortOrder';
 import { Post } from '../utils/interfaces/Post';
 import { Link } from 'react-router-dom';
+import CreatePost from '../components/CreatePost';
 
 const ForumCatalog: React.FC = () => {
     const apiURL = import.meta.env.VITE_API_URL;
@@ -124,7 +125,7 @@ const ForumCatalog: React.FC = () => {
                 </tbody>
             </table>
             {renderPagination()}
-            <Link to="/createpost">Create New Post</Link>
+            <CreatePost />
         </div>
     );
 };

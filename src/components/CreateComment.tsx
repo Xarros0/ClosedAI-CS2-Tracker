@@ -52,8 +52,8 @@ const CreateComment: React.FC<CreateCommentProps> = ({ postId }) => {
     <div>
       <h2>Create New Comment</h2>
       <form onSubmit={handleSubmit}>
+      <label htmlFor="content">Content:</label>
         <div>
-          <label htmlFor="content">Content:</label>
           <textarea 
             id="content" 
             value={content} 

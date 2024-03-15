@@ -34,17 +34,17 @@ const Forum: React.FC = () => {
         }
     };
 
-    const foreground: React.CSSProperties = {
+    const containerStyle: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
         width: '94%',
-        height: '100%',
+        maxHeight: '98%', // Limit the maximum height to 80% of the viewport height
+        overflowY: 'auto', // Enable vertical scrolling
         background: '#A2AEBB',
         border: '1px solid #000000',
         marginTop: '0px',
         marginLeft: '50px',
         marginRight: '50px',
-        overflow: 'hidden',
         padding: '20px',
     };
 
@@ -86,7 +86,7 @@ const Forum: React.FC = () => {
 
     // JSX to render the post and its comments
     return (
-        <div style={foreground}>
+        <div style={containerStyle}>
             <MainNavbar onSearch={() => {}} />
             {loading ? (
                 <div>Loading...</div>

@@ -16,7 +16,6 @@ import TopPlayer from './routes/topplayer';
 import Player from './routes/player';
 import EventsCatalog from './routes/eventsCatalog';
 import Events from './routes/events';
-import CreatePost from './components/CreatePost';
 
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -43,7 +42,6 @@ if (rootElement) {
           <Route path="/player" element={<Player />} />
           <Route path="/eventscatalog" element={<EventsCatalog />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/createpost" element={<CreatePost />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>,

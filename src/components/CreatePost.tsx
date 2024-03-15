@@ -66,8 +66,8 @@ const CreatePost: React.FC = () => {
     <div>
       <h2>Create New Post</h2>
       <form onSubmit={handleSubmit}>
+      <label htmlFor="title">Title:</label>
         <div>
-          <label htmlFor="title">Title:</label>
           <input 
             type="text" 
             id="title" 
@@ -76,8 +76,8 @@ const CreatePost: React.FC = () => {
             required 
           />
         </div>
+        <label htmlFor="content">Content:</label>
         <div>
-          <label htmlFor="content">Content:</label>
           <textarea 
             id="content" 
             value={content} 
