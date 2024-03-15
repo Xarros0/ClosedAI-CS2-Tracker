@@ -21,7 +21,7 @@ To test the frontend locally:
 1. Clone this project:
 
     ```bash
-    git clone [<repository-url>](https://github.com/Xarros0/ClosedAI-CS2-Tracker.git)
+    git clone https://github.com/Xarros0/ClosedAI-CS2-Tracker.git
     ```
 
 2. Install dependencies:
