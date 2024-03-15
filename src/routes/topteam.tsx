@@ -23,7 +23,11 @@ const TopTeam: React.FC = () => {
     const fetchTeamData = async () => {
       try {
         const response = await doGraphQLFetch(apiURL, getTeamRanking, {});
-        const teamData = response.getTeamRanking.map((item: any) => ({
+        const teamData: Team[] = response.getTeamRanking.map((item: {
+          team: { id: string; name: string };
+          points: number;
+          place: number;
+        }) => ({
           id: item.team.id,
           name: item.team.name,
           points: item.points,

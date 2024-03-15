@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import MainNavbar from '../components/mainNavbar';
+// @ts-expect-error - TS7016: Could not find a declaration file for module 'react-twitch-embed-video'.
 import ReactTwitchEmbedVideo from 'react-twitch-embed-video';
 import Streamer from '../components/streamer';
-import Stream from '../utils/interfaces/Streams';
+import Streams from '../utils/interfaces/Streams';
 import { getStreams } from '../utils/graphql/queries';
 import { doGraphQLFetch } from '../utils/graphql/fetch';
 
 const MainPage: React.FC = () => {
-
+    
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
@@ -71,7 +72,7 @@ const MainPage: React.FC = () => {
         gridAutoRows: '1fr',
     };
 
-    const [streamers, setStreamers] = useState<Stream[]>([]);
+    const [streamers, setStreamers] = useState<Streams[]>([]);
     const [name, setName] = useState<string>('ESLC');
 
     useEffect(() => {
