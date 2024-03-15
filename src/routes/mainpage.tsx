@@ -1,19 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import MainNavbar from '../components/mainNavbar';
 import ReactTwitchEmbedVideo from 'react-twitch-embed-video';
-const mainpage: React.FC = () => {
+import Streamer from '../components/streamer';
+import Stream from '../utils/interfaces/Stream';
+import { getStreams } from '../utils/graphql/queries';
+import { doGraphQLFetch } from '../utils/graphql/fetch';
+
+const MainPage: React.FC = () => {
+
     const foreground: React.CSSProperties = {
         boxSizing: 'border-box',
         position: 'absolute',
         width: '94%',
-        height: '2759px',
+        maxHeight: '98%', // Limit the maximum height to 80% of the viewport height
+        overflowY: 'auto', // Enable vertical scrolling
         background: '#A2AEBB',
         border: '1px solid #000000',
         marginTop: '0px',
         marginLeft: '50px',
         marginRight: '50px',
-        overflow: 'hidden',
+        padding: '20px',
     };
+
 
     const streamWindow: React.CSSProperties = {
         width: '80%',
@@ -23,11 +31,6 @@ const mainpage: React.FC = () => {
         marginTop: '75px',
         marginLeft: 'auto',
         marginRight: 'auto',
-    };
-
-    const streamWindowImage: React.CSSProperties = {
-        width: '100%',
-        height: '100%',
     };
 
     const streamCatalog: React.CSSProperties = {
@@ -54,7 +57,7 @@ const mainpage: React.FC = () => {
         height: '30px',
     };
 
-    const streamers: React.CSSProperties = {
+    const streamersBox: React.CSSProperties = {
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 220px)',
         gap: '10px',
@@ -69,95 +72,20 @@ const mainpage: React.FC = () => {
         gridAutoRows: '1fr',
     };
 
-    const streamerBox: React.CSSProperties = {
-        background: '#A07400',
-        color: 'white',
-        border: '1px solid #000000',
-        width: '200px',
-        height: '68px',
-        padding: '10px',
-        textAlign: 'center',
-    };
+    const [streamers, setStreamers] = useState<Stream[]>([]);
+    const [name, setName] = useState<string>('ESLC');
 
-    const streamerListItem: React.CSSProperties = {
-        display: 'flex',
-        alignItems: 'center',
-    };
+    useEffect(() => {
+        const handleNews = async () => {
+            const response = await doGraphQLFetch(import.meta.env.VITE_API_URL, getStreams, {});
+            setStreamers(response.getStreams);
+        };
+        handleNews();
+    }, []);
 
-    const streamerFlag: React.CSSProperties = {
-        width: '40px',
-        height: '30px',
-        marginRight: '10px',
-    };
-
-    const eventTitle: React.CSSProperties = {
-        fontSize: '22px',
-        marginTop: '75px',
-        display: 'flex',
-        width: '80%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        fontWeight: 'bold',
-    };
-
-    const eventStyle: React.CSSProperties = {
-        width: '80%',
-        height: '352px',
-        background: '#D9D9D9',
-        border: '1px solid #000000',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-    };
-
-    const newsTitle: React.CSSProperties = {
-        fontSize: '22px',
-        marginTop: '75px',
-        display: 'flex',
-        width: '80%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        fontWeight: 'bold',
-    };
-
-    const newsStyle: React.CSSProperties = {
-        width: '80%',
-        height: '551px',
-        background: '#D9D9D9',
-        border: '1px solid #000000',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        padding: '10px',
-    };
-    
-    const newsLinkStyle: React.CSSProperties = {
-        display: 'block',
-        textDecoration: 'none',
-        background: '#1C3144',
-        fontSize: '26px',
-        fontWeight: 'bold',
-        color: 'white',
-        padding: '10px',
-        marginBottom: '5px',
-        border: '1px solid #000000',
-    };
-
-    const newsLink: React.CSSProperties = {
-        color: 'black',
-        fontSize: '22px',
-        marginTop: '75px',
-        display: 'flex',
-        width: '15%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        fontWeight: 'bold',
-    };
-
-    
-
-
-
-
-
+    const applyName = (nameToApply: string) => {
+        setName(nameToApply);
+    }
 
     return (
         <div>
@@ -166,7 +94,7 @@ const mainpage: React.FC = () => {
                 <div style={streamWindow}>
                    
                     {/* ReactTwitchEmbedVideo component */}
-                    <ReactTwitchEmbedVideo channel="ESLCS" layout="video" theme="dark" width={1552} height={663} />
+                    <ReactTwitchEmbedVideo channel={name} layout="video" theme="dark" width={1552} height={663} />
                 </div>
                 <div style={streamCatalog}>
                     <p><b>Top Streams</b></p>
@@ -186,54 +114,13 @@ const mainpage: React.FC = () => {
                         <a>Organizers</a>
                     </div>
                 </div>
-                <div style={streamers}>
-                    <div style={streamerBox}>
-                        <div style={streamerListItem}>
-                            <img style={streamCatalogImg} src="./microphone.png" alt="Casters" />
-                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                            <span>Streamer 1</span>
-                        </div>
-                    </div>
-                    <div style={streamerBox}>
-                        <div style={streamerListItem}>
-                            <img style={streamCatalogImg} src="./cs2icon.png" alt="Streamers" />
-                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                            <span>Streamer 2</span>
-                        </div>
-                    </div>
-                    <div style={streamerBox}>
-                        <div style={streamerListItem}>
-                            <img style={streamCatalogImg} src="./trophy.jpg" alt="Organizers" />
-                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                            <span>Streamer 3</span>
-                        </div>
-                    </div>
-                    <div style={streamerBox}>
-                        <div style={streamerListItem}>
-                            <img style={streamerFlag} src="flag.png" alt="Country Flag" />
-                            <span>Streamer 4</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p style={eventTitle}><b>Current event</b></p>
-                    <div style={eventStyle}>
-                        <img style={streamWindowImage} src="event.jpg" alt="event" />
-                    </div>
-                </div>
-                <div>
-                    <p style={newsTitle}><b>Today's News</b></p>
-                    <div style={newsStyle}>
-                        <a style={newsLinkStyle} href="/newscatalog">News 1</a>
-                        <a style={newsLinkStyle} href="/newscatalog">News 2</a>
-                        <a style={newsLinkStyle} href="/newscatalog">News 3</a>
-                    </div>
-                    <a style={newsLink} href="/newscatalog">More news</a>
+                <div style={streamersBox}>
+                {streamers && streamers.map((e, i)=><div onClick={()=>setName(e.name)}><Streamer key={i} name={e.name} category={e.category} /></div>)}
                 </div>
             </div>
         </div>
     );
 };
 
-export default mainpage;
+export default MainPage;
 
