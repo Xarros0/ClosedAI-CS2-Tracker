@@ -52,6 +52,10 @@ query GetNews {
     title
     link
     date
+    country {
+      name
+      code
+    }
   }
 }
 `;
