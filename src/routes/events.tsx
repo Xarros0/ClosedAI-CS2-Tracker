@@ -9,7 +9,7 @@ interface PrizeDistribution {
     place: string;
     prize: string;
     qualifiesFor: string;
-    team: string;
+    team: {id: string, name: string};
 }
 
 interface Event {
@@ -139,7 +139,7 @@ const Events: React.FC = () => {
                             <div style={eventWinners}>
                                 {event?.prizeDistribution.map((prize, index) => (
                                     <div key={index} style={teamBox}>
-                                        <span style={teamTextStyle}>{prize.team.name}</span>
+                                        <span style={teamTextStyle}>{prize.team?.name}</span>
                                         <span style={placementTextStyle}>{prize.place}</span>
                                     </div>
                                 ))}

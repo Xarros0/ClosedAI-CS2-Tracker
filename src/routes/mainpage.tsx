@@ -22,7 +22,6 @@ const MainPage: React.FC = () => {
         padding: '20px',
     };
 
-
     const streamWindow: React.CSSProperties = {
         width: '80%',
         height: '663px',
