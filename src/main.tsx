@@ -4,7 +4,6 @@ import App from './App';
 import Login from './routes/login';
 import Signup from './routes/signup';
 import Profile from './routes/profile';
-import Search from './routes/search';
 import Settings from './routes/settings';
 import ForumCatalog from './routes/forumCatalog';
 import Forum from './routes/forum';
@@ -28,7 +27,6 @@ if (rootElement) {
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/search" element={<Search />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/forumcatalog" element={<ForumCatalog />} />

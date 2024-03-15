@@ -128,7 +128,7 @@ const Events: React.FC = () => {
 
     return (
         <div style={foreground}>
-            <MainNavbar onSearch={() => {}} />
+            <MainNavbar />
                 {loading ? (
                     <div>Loading...</div>
                 ) : (

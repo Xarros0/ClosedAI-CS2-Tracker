@@ -125,7 +125,7 @@ const ForumCatalog: React.FC = () => {
 
     return (
         <div style={containerStyle}>
-            <MainNavbar onSearch={() => {}} />
+            <MainNavbar />
             <table style={tableStyle}>
                 <thead>
                     <tr>

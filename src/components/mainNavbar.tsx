@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 
-const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
+const MainNavbar: React.FC = () => {
   const [loggedIn] = useState(!!Cookies.get('token')); // Check if token exists
-  const [searchQuery, setSearchQuery] = useState('');
 
   const navbarStyles: React.CSSProperties = {
     position: 'fixed',
@@ -42,24 +41,6 @@ const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
     marginLeft: '20px'
   };
 
-  const searchContainerStyles: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center', // Align search bar to the center
-    alignItems: 'center', // Vertically center the content
-  };
-
-  const searchInputStyles: React.CSSProperties = {
-    marginRight: '20px',
-    padding: '5px'
-  };
-
-  const searchButtonStyles: React.CSSProperties = {
-    padding: '5px 10px',
-    backgroundColor: '#3498db',
-    color: 'white',
-    border: 'none'
-  };
-
   const imageStyles: React.CSSProperties = {
     width: '30px',
     height: 'auto',
@@ -68,33 +49,13 @@ const MainNavbar: React.FC<{ onSearch: () => void }> = ({ onSearch }) => {
     marginRight: '20px',
   };
 
-  const handleSearch = () => {
-    onSearch();
-    
-
-  };
-
   return (
     <nav style={navbarStyles}>
       <div style={linkContainerStyles}>
       <h1 style={headingStyles}><a href="/" style={headingStyles}>CS2Esports</a></h1>
         <a href="/newscatalog" style={linkStyles}>News</a>
         <a href="/eventscatalog" style={linkStyles}>Events</a>
-        <a href="/topteam" style={linkStyles}>Top teams</a>
-        <a href="/topplayer" style={linkStyles}>Top players</a>
         <a href="/forumcatalog" style={linkStyles}>Forum</a>
-      </div>
-      <div style={searchContainerStyles}>
-        <input 
-          type="text" 
-          placeholder="Search..." 
-          style={searchInputStyles} 
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <div>
-            <button onClick={handleSearch} style={searchButtonStyles}>Search</button>
-        </div>
       </div>
       <div style={linkContainerStyles}>
         {!loggedIn && <a href="/login" style={linkStyles}>Sign in</a>}

@@ -86,7 +86,7 @@ const MainPage: React.FC = () => {
 
     return (
         <div>
-            <MainNavbar onSearch={() => {}} />
+            <MainNavbar />
             <div style={foreground}>
                 <div style={streamWindow}>
                    

@@ -87,7 +87,7 @@ const Forum: React.FC = () => {
     // JSX to render the post and its comments
     return (
         <div style={containerStyle}>
-            <MainNavbar onSearch={() => {}} />
+            <MainNavbar />
             {loading ? (
                 <div>Loading...</div>
             ) : (

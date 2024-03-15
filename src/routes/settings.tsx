@@ -10,10 +10,6 @@ import Cookies from 'js-cookie';
 const Settings: React.FC = () => {
     const apiURL = import.meta.env.VITE_API_URL;
 
-
-    const [eventsChecked, setEventsChecked] = useState(false);
-    const [newsChecked, setNewsChecked] = useState(false);
-    const [forumChecked, setForumChecked] = useState(false);
     const [newEmail, setNewEmail] = useState('');
     const [retypeNewEmail, setRetypeNewEmail] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
@@ -77,7 +73,7 @@ const Settings: React.FC = () => {
 
     return (
         <div>
-            <MainNavbar onSearch={() => {}} />
+            <MainNavbar />
             <div style={foreground}>
                 <div style={{ backgroundColor: '#A2AEBB', borderRadius: 8, height: '1000px', width: '1800px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <h1 style={{ color: 'black', marginTop: '0px', marginLeft: '20px' }}>Settings</h1>

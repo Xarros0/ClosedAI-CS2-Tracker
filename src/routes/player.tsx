@@ -16,7 +16,7 @@ const Player: React.FC<{
 }> = ({ name, age, currentTeam, statistics }) => {
     return (
         <div style={{ backgroundColor: '#A2AEBB', height: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <Navbar onSearch={() => {}} />
+            <Navbar />
             <div style={playerContainerStyles}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <img src="/path/to/image.jpg" alt="Player" style={{ marginRight: '10px', width: '50px', height: '50px', borderRadius: '50%' }} />

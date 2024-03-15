@@ -89,7 +89,7 @@ const EventsCatalog: React.FC = () => {
 
     return (
         <div style={containerStyle}>
-            <MainNavbar onSearch={() => { }} />
+            <MainNavbar />
             <div>
                 <h1 style={titleStyling}>Ongoing events:</h1>
                 {ongoingEvents.map((event) => (

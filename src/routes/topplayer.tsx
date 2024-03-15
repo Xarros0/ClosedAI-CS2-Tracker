@@ -125,7 +125,7 @@ const TopPlayer: React.FC = () => {
 
   return (
     <div>
-      <Navbar onSearch={() => {}} />
+      <Navbar />
       <div>
         <div style={foreground}>
           <h1 style={titleStyle}>Top Players:</h1>

@@ -44,7 +44,7 @@ const NewsCatalog: React.FC = () => {
 
     return (
         <div style={containerStyle}>
-            <MainNavbar onSearch={() => {}} />
+            <MainNavbar />
             <div style={newsPreviewTitle}>
             <h1 style={{ marginLeft: "20px" }}>News Catalog</h1>
             </div>
