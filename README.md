@@ -13,6 +13,7 @@ The app caters to anyone interested in the Counter-Strike 2 E-sports scene. It o
 - View statistics of teams and players.
 - Stay updated with upcoming events and tournaments.
 - Access the latest news articles related to Counter-Strike 2 E-sports.
+- watch livestreams of pro cs2 players
 
 ## Usage
 
