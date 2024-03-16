@@ -8,6 +8,8 @@ The app caters to anyone interested in the Counter-Strike 2 E-sports scene. It o
 
 ## Features
 
+- creating own personal account for page
+- Esports Forum page
 - View statistics of teams and players.
 - Stay updated with upcoming events and tournaments.
 - Access the latest news articles related to Counter-Strike 2 E-sports.
